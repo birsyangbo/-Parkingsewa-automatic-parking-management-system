@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parking Sewa Admin Panel</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="{% block body_class %}{% endblock %}"> {# MODIFIED: Allows dynamic class for body #}
+    <header>
+        <h1>Parking Sewa Admin Panel</h1>
+        <nav>
+            <a href="{{ url_for('index') }}">Dashboard</a> |
+            <a href="{{ url_for('view_records') }}">Parking Records</a> |
+            <a href="{{ url_for('view_images') }}">Plate Images</a> |
+            <a href="{{ url_for('view_tickets') }}">Tickets</a> |
+            <a href="{{ url_for('view_reports') }}">Reports</a> |
+            <a href="{{ url_for('live_feed_page') }}">Live Feed</a>
+        </nav>
+    </header>
+    
+    <main class="main-content-area"> {# ADDED CLASS: main-content-area for styling #}
+        {# Flash Messages Section #}
+        {% with messages = get_flashed_messages(with_categories=true) %}
+          {% if messages %}
+            <ul class="flashes">
+            {% for category, message in messages %}
+              <li class="{{ category }}">{{ message }}</li>
+            {% endfor %}
+            </ul>
+          {% endif %}
+        {% endwith %}
+
+        {% block content %}{% endblock %}
+    </main>
+    
+    <footer>
+        <p> {{ current_year }} Parking Sewa</p>
+    </footer>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

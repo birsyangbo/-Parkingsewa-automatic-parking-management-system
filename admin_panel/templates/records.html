@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Parking Records</h2>
+
+<form method="GET" action="{{ url_for('view_records') }}" class="filter-form">
+    {# REMOVED: Search by Plate Number input #}
+    <select name="status">
+        <option value="">All Statuses</option>
+        <option value="parked" {% if request.args.get('status') == 'parked' %}selected{% endif %}>Parked</option>
+        <option value="exited" {% if request.args.get('status') == 'exited' %}selected{% endif %}>Exited</option>
+    </select>
+    <label for="start_date">From:</label>
+    <input type="date" name="start_date" id="start_date" value="{{ request.args.get('start_date', '') }}">
+    <label for="end_date">To:</label>
+    <input type="date" name="end_date" id="end_date" value="{{ request.args.get('end_date', '') }}">
+    <button type="submit">Apply Filters</button>
+    <a href="{{ url_for('view_records') }}" class="clear-filters">Clear Filters</a>
+</form>
+
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            {# REMOVED: Plate Number header #}
+            <th>Vehicle Type</th>
+            <th>Entry Time</th>
+            <th>Exit Time</th>
+            <th>Duration</th>
+            <th>Cost</th>
+            <th>Status</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for record in records %}
+        <tr>
+            <td>{{ record.id }}</td>
+            {# REMOVED: Plate Number data cell #}
+            <td>{{ record.vehicle_type }}</td>
+            <td>{{ record.entry_time }}</td>
+            <td>{{ record.exit_time if record.exit_time else 'N/A' }}</td>
+            <td>
+                {% if record.duration_minutes is not none %}
+                    {# Convert duration from minutes to total seconds for HH:MM:SS formatting #}
+                    {% set total_seconds = (record.duration_minutes * 60) | int %}
+                    {% set hours = (total_seconds // 3600) | int %}
+                    {% set minutes = ((total_seconds % 3600) // 60) | int %}
+                    {% set remaining_seconds = total_seconds % 60 %}
+                    {{ "%02d:%02d:%02d" % (hours, minutes, remaining_seconds) }}
+                {% else %}
+                    N/A
+                {% endif %}
+            </td>
+            <td>{{ "%.2f" % record.cost if record.cost is not none else 'N/A' }}</td>
+            <td>{{ record.status }}</td>
+            <td>
+                {# Delete form for better security than GET link #}
+                <form method="POST" action="{{ url_for('delete_record', record_id=record.id) }}" 
+                      onsubmit="return confirm('Are you sure you want to delete record ID {{ record.id }} ({{ record.plate_number }})?');">
+                    <button type="submit" class="delete-button">Delete</button>
+                </form>
+            </td>
+        </tr>
+        {% else %}
+        <tr>
+            {# Updated colspan from 9 to 8 because one column (Plate Number) was removed #}
+            <td colspan="8">No records found.</td> 
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

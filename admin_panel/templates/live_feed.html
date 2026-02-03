@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Live Camera Feed</h2>
+<div style="text-align: center;">
+    {# The image source will be continuously updated by JavaScript #}
+    <img id="live-camera-feed" src="{{ url_for('serve_latest_frame') }}" 
+         alt="Live Camera Feed"
+         style="max-width: 80%; border: 1px solid #ccc; margin-top: 20px;">
+    <p>Refreshing every 0.1 seconds (ensure `last.py` is saving `latest_frame.jpg` to `Parkingsewa/live_feed/`)</p>
+</div>
+
+{# The JavaScript for refreshing the image is now in script.js #}
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Detected Plate Images</h2>
+<div class="image-gallery">
+    {% for image in images %}
+    <div class="image-item">
+        <a href="{{ url_for('serve_image', filename=image) }}" target="_blank">
+            <img src="{{ url_for('serve_image', filename=image) }}" alt="{{ image }}">
+        </a>
+        <p>{{ image }}</p>
+    </div>
+    {% else %}
+    <p>No plate images found.</p>
+    {% endfor %}
+</div>
+{% endblock %}

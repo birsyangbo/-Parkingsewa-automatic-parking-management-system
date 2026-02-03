@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block body_class %}dashboard-background{% endblock %} {# NEW: Adds class to body for this page #}
+
+{% block content %}
+<div class="dashboard-panel"> {# NEW: Wrapper for dashboard content #}
+    <h2>Dashboard</h2>
+    <p>Total Vehicles Processed: {{ total_vehicles }}</p>
+    <p>Currently Parked Vehicles: <span id="live-parked-count">{{ parked_vehicles }}</span></p>
+</div> {# END: Wrapper for dashboard content #}
+
+{# The JavaScript for updating the parked count is now in script.js #}
+{% endblock %}

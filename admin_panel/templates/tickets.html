@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Generated Tickets</h2>
+{# This div will create a flexible grid layout for your images, using styles from style.css #}
+<div class="image-gallery">
+    {% for ticket in tickets %}
+    {# Each ticket image will be wrapped in its own item div #}
+    <div class="image-item">
+        {# The <a> tag makes the image clickable, opening the full-size image in a new tab #}
+        <a href="{{ url_for('serve_ticket', filename=ticket) }}" target="_blank">
+            {# The <img> tag displays the image directly on the page #}
+            <img src="{{ url_for('serve_ticket', filename=ticket) }}" alt="Ticket: {{ ticket }}">
+        </a>
+        {# Displays the filename below the image #}
+        <p>{{ ticket }}</p>
+    </div>
+    {% else %}
+    {# Message to display if no tickets are found in the directory #}
+    <p>No tickets found.</p>
+    {% endfor %}
+</div>
+{% endblock %}
