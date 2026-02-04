@@ -82,6 +82,10 @@ This approach is **language-independent** and robust against lighting, angle, an
 <p align="center">
   <img src="admin_panel/static/images/dashboard.png" width="800">
 </p>
+### Live testing
+<p align="center">
+  <img src="admin_panel/static/images/testing.png" width="800">
+</p>
 
 ### Live Camera Detection
 <p align="center">
