@@ -1,5 +1,5 @@
 #  Parking-Sewa  
-**Smart Parking Management System using Computer Vision**
+**Smart Parking Management System**
 
 Parking-Sewa is a smart parking management system designed to automate vehicle entry, exit, verification, and billing using computer vision techniques. The system focuses on **visual plate matching instead of text reading**, making it reliable for real-world conditions in Nepal.
 
