@@ -1,25 +1,25 @@
-# 🚗 Parking-Sewa  
+#  Parking-Sewa  
 **Smart Parking Management System using Computer Vision**
 
 Parking-Sewa is a smart parking management system designed to automate vehicle entry, exit, verification, and billing using computer vision techniques. The system focuses on **visual plate matching instead of text reading**, making it reliable for real-world conditions in Nepal.
 
 ---
 
-## 📌 Features
+## Features
 
-- 🔍 **Automatic License Plate Detection** using YOLOv8  
-- 🖼️ **Visual Plate Verification** using perceptual image hashing  
-- ⏱️ **Automatic Entry & Exit Time Tracking**  
-- 💰 **Automated Parking Fee Calculation**  
-- 🚘 **Vehicle Type Classification** (Car, Bike, Truck, etc.)  
-- 🎫 **Auto Ticket Generation with QR Code**  
-- 🔊 **Voice Feedback System**  
-- 📊 **Admin Dashboard with Live Camera Feed**  
-- 🗄️ **SQLite Database for Parking Records**
+- **Automatic License Plate Detection** using YOLOv8  
+- **Visual Plate Verification** using perceptual image hashing  
+- **Automatic Entry & Exit Time Tracking**  
+- **Automated Parking Fee Calculation**  
+- **Vehicle Type Classification** (Car, Bike, Truck, etc.)  
+- **Auto Ticket Generation with QR Code**  
+- **Voice Feedback System**  
+- **Admin Dashboard with Live Camera Feed**  
+- **SQLite Database for Parking Records**
 
 ---
 
-## 🎯 Project Objectives
+## Project Objectives
 
 - Reduce manual effort in parking management  
 - Improve accuracy in vehicle verification  
@@ -29,7 +29,7 @@ Parking-Sewa is a smart parking management system designed to automate vehicle e
 
 ---
 
-## 🧠 System Overview
+##  System Overview
 
 The system works by:
 1. Capturing vehicle images at entry and exit points  
@@ -69,14 +69,14 @@ This approach is **language-independent** and robust against lighting, angle, an
 
 ---
 
-## 🧪 Dataset
+##  Dataset
 
 - **Custom License Plate Dataset** (8,000+ images from Kaggle)  
 - Trained YOLOv8 model for accurate plate detection  
 - Pretrained YOLOv8 model used for vehicle type classification  
 
 ---
-## 📸 Project Screenshots
+## Project Screenshots
 
 ### Admin Dashboard
 <p align="center">
